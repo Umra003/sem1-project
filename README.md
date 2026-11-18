@@ -6,7 +6,7 @@
 
 # 1. Project Overview
 
-Personal Digital Life Dashboard is a web application developed using Python and the Django framework. It provides users with a centralized platform to manage their daily activities, academic progress, financial records, personal goals, notes, and important events.
+Personal Digital Life Dashboard is a web-based application developed using React Native Web, Python, and the Django framework. It provides users with a centralized platform to manage their daily activities, academic progress, financial records, personal goals, notes, and important events.
 
 In everyday life, people often depend on multiple applications to manage different activities. For example, one application for maintaining notes, another for tracking expenses, another for managing tasks, and another for scheduling events.
 
@@ -149,7 +149,7 @@ It can display:
 - Goal progress.
 - Upcoming events.
 
-Python and Matplotlib will be used for relevant data analysis and visualization. Charts will be displayed within the web application's dashboard.
+Python and Matplotlib will be used for relevant data analysis and visualization. Charts and statistical information will be displayed within the web application's dashboard.
 
 ## 4.9 Notifications and Reminders
 
@@ -166,59 +166,60 @@ Features:
 
 | Component | Technology |
 |---|---|
-| Frontend | HTML5 |
-| Styling | CSS3 |
-| UI Framework | Bootstrap |
-| Client-side functionality | JavaScript |
-| Programming Language | Python |
+| Frontend | React Native Web |
+| Programming Language (Frontend) | JavaScript |
+| Backend Programming Language | Python |
 | Backend Framework | Django |
-| Database | SQLite |
-| Data Visualization | Matplotlib |
+| API Framework | Django REST Framework |
+| Database | MySQL |
+| Data Analysis and Visualization | Python, Matplotlib |
 | Code Editor | Visual Studio Code |
 | Version Control | Git and GitHub |
 
 ## Technology Explanation
 
-**HTML5:** Used to create the structure of web pages.
+**React Native Web:** Used to build the frontend interface using reusable React Native components that can run in web browsers.
 
-**CSS3:** Used to style the application and improve its appearance.
+**JavaScript:** Used for frontend programming, component logic, and user interactions.
 
-**Bootstrap:** Used to create responsive layouts and reusable UI components.
+**Python:** Used for backend programming, application logic, and data processing.
 
-**JavaScript:** Used for basic client-side interactions.
+**Django:** A Python-based web framework responsible for backend functionality, authentication, database operations, and application logic.
 
-**Python:** Used for application logic and data processing.
+**Django REST Framework:** Used to create REST APIs that allow the frontend and backend to communicate.
 
-**Django:** Handles backend functionality, URL routing, authentication, database operations, and communication between the frontend and backend.
+**MySQL:** A relational database management system used to store user accounts and application data, including tasks, study sessions, expenses, goals, notes, and events.
 
-**SQLite:** Stores user information and application data. It is supported by Django by default.
+**Matplotlib:** A Python library used to generate charts and graphical representations of study statistics, expenses, and productivity.
 
-**Matplotlib:** Used to generate charts and graphical representations of study statistics, expenses, and productivity.
+**Git and GitHub:** Used for version control, project management, and tracking development progress.
 
 # 6. System Architecture
 
 The application follows a client-server architecture.
 
+The frontend and backend communicate through HTTP requests and API endpoints.
+
 The general workflow is:
 
 1. The user interacts with the application through a web browser.
-2. HTML, CSS, Bootstrap, and JavaScript provide the user interface.
-3. Django receives requests through URL routing.
-4. Django views process requests and execute application logic.
-5. Django models communicate with the SQLite database.
+2. React Native Web handles the user interface and user interactions.
+3. API requests are sent to the Django backend.
+4. Django receives and processes the requests.
+5. Django models communicate with the MySQL database.
 6. The requested information is retrieved or stored.
-7. Django sends the processed information to the frontend.
-8. The browser displays the updated information to the user.
+7. Django sends the response to the frontend through APIs.
+8. React Native Web displays the updated information to the user.
 
 **Architecture Flow:**
 
-User → Web Browser → Django URLs → Django Views → Django Models → SQLite Database
+User → Web Browser → React Native Web → REST API → Django Backend → MySQL Database
 
-The response follows the reverse direction and is displayed on the webpage.
+The response is returned from Django to React Native Web and displayed in the browser.
 
 # 7. Database
 
-SQLite is used as the database management system.
+MySQL is used as the database management system.
 
 The database stores information related to:
 
@@ -233,7 +234,7 @@ The database stores information related to:
 
 Each user's personal records will be associated with their account to maintain data separation.
 
-Django ORM (Object-Relational Mapping) will be used to interact with the database without requiring manually written SQL queries for every operation.
+Django ORM (Object-Relational Mapping) will be used to interact with MySQL and perform database operations without manually writing SQL queries for every operation.
 
 # 8. Application Workflow
 
@@ -244,140 +245,6 @@ The general application workflow is:
 3. After successful authentication, the user accesses their personalized dashboard.
 4. The user selects the required module.
 5. The user adds, views, updates, or deletes information.
-6. Django processes the information and stores it in SQLite.
-7. The dashboard retrieves relevant information from the database.
-8. Statistics, charts, and reminders are displayed on the webpage.
-
-All major functionalities will be accessible through the web application itself.
-
-# 9. Development Environment
-
-The application will be developed using Visual Studio Code.
-
-Python virtual environments will be used to manage project dependencies separately.
-
-Git and GitHub will be used for version control and tracking project development.
-
-# 10. Installation and Setup
-
-Follow these steps to run the project locally.
-
-## Prerequisites
-
-Install the following:
-
-- Python
-- Visual Studio Code
-- Git
-- A modern web browser
-
-## Step 1: Clone the Repository
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-```
-
-Navigate into the project directory:
-
-```bash
-cd your-project-folder
-```
-
-## Step 2: Create a Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-## Step 3: Activate the Virtual Environment
-
-For Windows PowerShell:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
-## Step 4: Install Dependencies
-
-```bash
-pip install django matplotlib
-```
-
-## Step 5: Apply Database Migrations
-
-```bash
-python manage.py migrate
-```
-
-## Step 6: Run the Development Server
-
-```bash
-python manage.py runserver
-```
-
-## Step 7: Open the Application
-
-Open your browser and visit:
-
-```text
-http://127.0.0.1:8000/
-```
-
-**Note:** These instructions assume that the Django project and its `manage.py` file have already been created. Additional dependencies may be added as development progresses.
-
-# 11. Expected Outcome
-
-The expected outcome is a functional web-based personal management system that provides users with a centralized platform to organize and monitor different aspects of their daily lives.
-
-The application aims to:
-
-- Improve personal organization.
-- Help users manage their time effectively.
-- Monitor academic and personal productivity.
-- Maintain financial records.
-- Track progress toward goals.
-- Store important information.
-- Manage events and deadlines.
-- Provide meaningful insights through statistics and charts.
-
-# 12. Future Enhancements
-
-Possible improvements for future versions include:
-
-- Interactive charts and advanced analytics.
-- Weekly and monthly productivity reports.
-- Advanced search and filtering.
-- Email notifications.
-- Exporting expense and study reports.
-- Dark mode.
-- Improved calendar integration.
-- Deployment to a cloud hosting platform.
-- Progressive Web App (PWA) support.
-
-# 13. Project Status
-
-**Status:** In Development
-
-The application is being developed module by module. Features will be implemented, tested, and integrated into the main dashboard throughout the development process.
-
-# 14. Conclusion
-
-Personal Digital Life Dashboard aims to provide a simple, organized, and user-friendly platform for managing different aspects of everyday life.
-
-By integrating task management, study tracking, expense management, goal tracking, notes, calendar events, and analytics into one web application, the project reduces the need to depend on multiple separate applications.
-
-The main focus is to provide a centralized digital environment where users can manage their activities and gain a better understanding of their daily productivity.
-
----
-
-**Project Title:** Personal Digital Life Dashboard
-
-**Project Type:** Web Application
-
-**Backend:** Python and Django
-
-**Database:** SQLite
-
-**Frontend:** HTML, CSS, Bootstrap, and JavaScript
-
-**Development Environment:** Visual Studio Code
+6. React Native Web sends the required API request to Django.
+7. Django processes the request and stores or retrieves information from MySQL.
+8. The dashboard displays updated
